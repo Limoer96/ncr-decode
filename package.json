@@ -6,11 +6,11 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "homepage": "xxx",
-  "bugs": "xx",
+  "homepage": "https://github.com/xiaomoer/ncr-decode",
+  "bugs": "https://github.com/xiaomoer/ncr-decode/issues",
   "repository": {
     "type": "git",
-    "url": "xxx"
+    "url": "https://github.com/xiaomoer/ncr-decode"
   },
   "bin": {
     "ncrd": "client.js"
