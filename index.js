@@ -24,6 +24,24 @@ function str2NCR(str) {
   str += ';';
   return str;
 }
+/**
+ * string to NCR string
+ * @param {string} str
+ * @param {number} radix 10 or 16 default is 10
+ * @returns {string} NRC string 
+ */
+function ncrEncode(str, radix = 10) {
+  if (!str || typeof str !=='string') return '';
+  if ([10, 16].indexOf(radix) === -1) {
+    throw new Error(`Unsupported radix ${radix}, use 10 or 16`);
+  }
+  let result = '';
+  for (let char of str) {
+    let codePoint = char.codePointAt().toString(radix);
+    result += `&#${radix === 16 ? 'x': ''}${codePoint};`;
+  }
+  return result;
+}
 
 function checkNCR(str) {
   let reg = /&#x?/;
@@ -38,9 +56,6 @@ function dfmDecode(str) {
   return checkNCR(str) ? ncrDecode(str) : ncrDecode(str2NCR(str));
 }
 
-// console.log(dfmDecode('#23435#20307'));
-// console.log(str2NCR('#23435#20307'));
-// console.log(ncrDecode('&#23435;&#20307;'));
 exports.ncrDecode = ncrDecode;
-exports.str2NCR = str2NCR;
+exports.ncrEncode = ncrEncode;
 exports.dfmDecode =dfmDecode;

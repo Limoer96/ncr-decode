@@ -19,6 +19,7 @@ there are some **NCR** string below:
 1. A tool to decode NCR string;
 2. A tool to decode NCR in `.dfm` file;
 3. A cli to decode NCR string.
+4. encode string to NCR.(new)
 
 ## Install
 
@@ -36,13 +37,16 @@ see from [npm package](https://npmjs.org/package/ncr-decode).
 
 ```javascript
 const decode = require('ncr-decode');
+console.log(decode.ncrEncode('宋体')); // &#23435;&#20307;
+console.log(decode.ncrEncode('宋体', 16)); // &#x5b8b;&#x4f53;
 console.log(decode.ncrDecode('&#23435;&#20307;')); // 宋体
-console.log(decode.str2NCR('#23435#20307')); // &#23435;&#20307;
 console.log(decode.dfmDecode('#23435#20307')); // 宋体
 console.log(decode.dfmDecode('&#23435;&#20307;')); // 宋体
 ```
 
-### CLI
+### Client
+
+#### REPL
 
 ```
 PS C:\Users\limoer\www\dfmdecode> ncrd
@@ -59,6 +63,18 @@ After decoding:
 ->
 
 ```
+
+#### CLI
+
+```
+Usage: ncrd [options] [<input string>]
+
+  -i, --inline
+    inline mode, convert the input string
+  <input string>
+    NCR string or NCR string in dfm, if type the wrong type, just return.
+```
+
 ### API
 
 ```javascript
@@ -74,8 +90,16 @@ function ncrDecode(str) {...}
  * @param {string} str
  * @return {string}
  */
-function str2NCR(str) {...}
+// [!Deprecated]use ncrEncode instead
+// function str2NCR(str) {...}
 
+/**
+ * string to NCR string
+ * @param {string} str
+ * @param {number} radix [10 || 16] default: 10
+ * @returns {string} NRC string 
+ */
+function ncrEncode(str, radix = 10){...}
 /**
  * decode ncr in dfm
  * @param {string} str 
@@ -83,3 +107,10 @@ function str2NCR(str) {...}
  */
 function dfmDecode(str) {...}
 ```
+## ChangeLog
+
+### v1.1.0
+
+1. add tests.
+2. new API `ncrEncode` convert string to NCR string.
+3. inline CLI support, use `ncrd --inline '#23435#20307'`. **Don't forget the quotes!**

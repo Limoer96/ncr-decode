@@ -4,7 +4,7 @@
   "description": "A Tool to decode numeric character reference(NCR)",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "homepage": "https://github.com/xiaomoer/ncr-decode",
   "bugs": "https://github.com/xiaomoer/ncr-decode/issues",
