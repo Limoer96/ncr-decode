@@ -13,11 +13,8 @@
     "url": "https://github.com/xiaomoer/ncr-decode"
   },
   "bin": {
-    "ncrd": "client.js"
+    "ncrd": "src/client.js"
   },
-  "files": [
-    "*.js"
-  ],
   "keywords": [
     "delphi",
     "dfm",
