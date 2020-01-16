@@ -28,5 +28,8 @@
     "name": "limoer",
     "email": "myt19960503@outlook.com"
   },
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^24.9.0"
+  }
 }
