@@ -1,6 +1,6 @@
 {
   "name": "ncr-decode",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A Tool to decode numeric character reference(NCR)",
   "main": "index.js",
   "scripts": {
