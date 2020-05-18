@@ -4,7 +4,7 @@
 
 ## what is NCR?
 
-> numeric character reference(**NCR**) is similar to **HTML Entities**. **NCR** consists of two parts. prefix: "&#" or "&#x", body: Unicode code point. We offen see it in html, xml or event in dfm file(Delphi Form File).
+> numeric character reference(**NCR**) is similar to **HTML Entities**. **NCR** consists of two parts. prefix: "&#" or "&#x", body: Unicode code point. We offten see it in html, xml or even in dfm file(Delphi Form File).
 
 there are some **NCR** string below:
 
@@ -24,9 +24,11 @@ there are some **NCR** string below:
 ## Install
 
 ```bash
-npm install --save ncr-decode 
+npm install --save ncr-decode
 ```
+
 use the cli
+
 ```bash
 npm install -g ncr-decode
 ```
@@ -36,12 +38,13 @@ see from [npm package](https://npmjs.org/package/ncr-decode).
 ## Usage
 
 ```javascript
-const decode = require('ncr-decode');
-console.log(decode.ncrEncode('宋体')); // &#23435;&#20307;
-console.log(decode.ncrEncode('宋体', 16)); // &#x5b8b;&#x4f53;
-console.log(decode.ncrDecode('&#23435;&#20307;')); // 宋体
-console.log(decode.dfmDecode('#23435#20307')); // 宋体
-console.log(decode.dfmDecode('&#23435;&#20307;')); // 宋体
+const ncrd = require('ncr-decode')
+console.log(ncrd.encode('宋体')) // &#23435;&#20307;
+console.log(ncrd.encode('宋体', 16)) // &#x5b8b;&#x4f53;
+console.log(ncrd.decode('&#23435;&#20307;')) // 宋体
+console.log(ncrd.decode('Tim, &#20320;&#22909')) // Tim, 你好
+console.log(ncrd.dfmDecode('#23435#20307')) // 宋体
+console.log(ncrd.dfmDecode('&#23435;&#20307;')) // 宋体
 ```
 
 ### Client
@@ -51,16 +54,14 @@ console.log(decode.dfmDecode('&#23435;&#20307;')); // 宋体
 ```
 PS C:\Users\limoer\www\dfmdecode> ncrd
 enter `.exit` to exit.
--> &#23435;&#20307;
-After decoding:
+> &#23435;&#20307;
 宋体
--> #23435#20307
-After decoding:
+> #23435#20307
 宋体
--> &#x4e2d;&#x56fd;
-After decoding:
-中国
-->
+> Tom, &#20320;&#22909;
+Tom, 你好
+> 123
+[!invalid]  123
 
 ```
 
@@ -97,16 +98,17 @@ function ncrDecode(str) {...}
  * string to NCR string
  * @param {string} str
  * @param {number} radix [10 || 16] default: 10
- * @returns {string} NRC string 
+ * @returns {string} NRC string
  */
 function ncrEncode(str, radix = 10){...}
 /**
  * decode ncr in dfm
- * @param {string} str 
+ * @param {string} str
  * @return {string}
  */
 function dfmDecode(str) {...}
 ```
+
 ## ChangeLog
 
 ### v1.1.0
